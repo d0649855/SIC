@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
  
 class Data2 {
 	private String first = "";
@@ -77,9 +76,8 @@ public class SIC {
 		ArrayList<String> Location = new ArrayList<>();
 		ArrayList<String> Target = new ArrayList<>();
 		ArrayList<Data2> Data = new ArrayList<>();
-		FileReader fr = new FileReader("SIC.txt");
-		BufferedReader br = new BufferedReader(fr);
-		Scanner scn =new Scanner(br);
+		FileReader fr = new FileReader("test.txt");
+		Scanner scn =new Scanner(fr);
 		int n = 0, num = 0, DecLoc = 0, j = 0, i = 0;
 		String HexLoc,str1=" ",str2=" ",str3=" ";
 		boolean isOpCode = false,isLine=false,b=false;
@@ -193,7 +191,7 @@ public class SIC {
 					break;
 				}
 			}
-			/// BYTE處理分為X和C
+
 			if (Data.get(i).getSecond().equals("BYTE")) {
 				char c[] = Data.get(i).getThird()
 						.substring(Data.get(i).getThird().indexOf('\'') + 1, Data.get(i).getThird().length() - 1)
@@ -230,8 +228,8 @@ public class SIC {
 		PrintWriter Write = new PrintWriter("SIC_Final.txt");
 		System.out.printf("%s\t%-6s\t%-6s\t%-5s\t%s\t\r\n", "位置", " ", "原始敘述", " ", "目的碼");
 		Write.printf("%s\t%-6s\t%-6s\t%-5s\t%s\t\r\n", "位置", " ", "原始敘述", " ", "目的碼");
-		System.out.println("------------------------------------------------");
-		Write.println("------------------------------------------------");
+		System.out.println("\n");
+		Write.println("\n");
 		for (j = 0; j < Data.size(); j++) {
 			Write.printf("%s\t%-6s\t%-6s\t%-10s\t%s\t\r\n", Location.get(j), Data.get(j).getFirst(),
 					Data.get(j).getSecond(), Data.get(j).getThird(), Target.get(j));
